@@ -11,7 +11,7 @@ int	main()
 	fprintf(file, "hello world %d", 4242);
 	fclose(file);
 
-
+	printf("%p\n", "42");
 
 	return 0;
 }
