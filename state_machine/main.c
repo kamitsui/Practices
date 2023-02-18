@@ -73,9 +73,9 @@ void	add_to_buff(char c, t_state_machine *machine)
 {
 	if (machine->len == 4096)
 	{
-		//strjoin_free(out, machine->buffer);
-		machine->len = 0;
+		strjoin_free(out, machine->buffer);
 		bzero(&machine->buffer, 4096);
+		machine->len = 0;
 	}
 	machine->buffer[machine->len] = c;
 	machine->len++;
@@ -108,9 +108,9 @@ void	ft_printf(char *input)
 		if ((ret = process[machine.state](input, &machine)) >= 0)
 			input += ret;
 	}
-	//strjoin_free(out, machine->buffer);
-	//write(1, out, size_out); 
-	//free(out);
+	strjoin_free(out, machine->buffer);
+	write(1, out, size_out); 
+	free(out);
 }
 
 int		main(int ac, char **av)
