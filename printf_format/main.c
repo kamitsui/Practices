@@ -90,6 +90,9 @@ int	main(void)
 	printf("|%o|\t\t%%o\n", 012345);
 	printf("|%#o|\t%%#o\n", 012345);
 	printf("---- flag time ----\n");
+	printf("---- other ----\n");
+	printf("asdfgh%");
+	printf("\nasddd%basdfg");
 	//printf("%1$d:%2$.*3$d:%4$.*3$d\n", HH, min, precision, sec);
 	return 0;
 }
