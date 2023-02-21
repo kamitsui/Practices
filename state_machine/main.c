@@ -1,18 +1,21 @@
+#include <stdio.h>
+#include <unistd.h>
+#include "../../Libft/libft/libft.h"
 #include "main.h"
 
-int		ft_strnequ(char *s1, char *s2, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n && s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
+// int		ft_strnequ(char *s1, char *s2, int n)
+// {
+// 	int	i;
+// 
+// 	i = 0;
+// 	while (i < n && s1[i] != '\0' && s2[i] != '\0')
+// 	{
+// 		if (s1[i] != s2[i])
+// 			return (FALSE);
+// 		i++;
+// 	}
+// 	return (TRUE);
+// }
 
 int		error(char *input, t_state_machine *machine)
 {
@@ -73,7 +76,7 @@ void	add_to_buff(char c, t_state_machine *machine)
 {
 	if (machine->len == 4096)
 	{
-		strjoin_free(out, machine->buffer);
+		//ft_strjoin_free(out, machine->buffer);
 		bzero(&machine->buffer, 4096);
 		machine->len = 0;
 	}
@@ -108,9 +111,9 @@ void	ft_printf(char *input)
 		if ((ret = process[machine.state](input, &machine)) >= 0)
 			input += ret;
 	}
-	strjoin_free(out, machine->buffer);
-	write(1, out, size_out); 
-	free(out);
+	//ft_strjoin_free(out, machine->buffer);
+	//write(1, out, size);
+	//free(out);
 }
 
 int		main(int ac, char **av)

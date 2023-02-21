@@ -32,7 +32,7 @@ int	main(void)
 	char buff[BUFF_SIZE];
 	memset(buff, 'a', BUFF_SIZE - 1);
 	buff[BUFF_SIZE - 1] = '\0';
-	//ft_putstr_fd(buff, STDERR_FILENO);
-	ft_putstr_fd2(buff, STDERR_FILENO);
+	ft_putstr_fd(buff, STDERR_FILENO);
+	//ft_putstr_fd2(buff, STDERR_FILENO);
 	return 0;
 }
