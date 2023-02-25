@@ -3,20 +3,6 @@
 #include "../../Libft/libft/libft.h"
 #include "main.h"
 
-// int		ft_strnequ(char *s1, char *s2, int n)
-// {
-// 	int	i;
-// 
-// 	i = 0;
-// 	while (i < n && s1[i] != '\0' && s2[i] != '\0')
-// 	{
-// 		if (s1[i] != s2[i])
-// 			return (FALSE);
-// 		i++;
-// 	}
-// 	return (TRUE);
-// }
-
 int		error(char *input, t_state_machine *machine)
 {
 	////////// DO ERROR CONV
@@ -36,9 +22,10 @@ int		conv(char *input, t_state_machine *machine)
 	{
 		if (ft_strnequ(input, str_conv + i, 1) == TRUE)
 		{
-			printf("cur = '%c' | state = CONV\n", *input);
 			machine->flag |= (1 << i) << 8;
+			printf("cur = '%c' | state = CONV \t| flag = %s (%d)\n", *input, ft_itoa_binary(machine->flag), machine->flag);
 			////////// DO CONV
+			do_conversion(machine);
 			machine->state = LETTER;
 			machine->flag = 0;
 			return (1);
@@ -61,8 +48,8 @@ int		flag(char *input, t_state_machine *machine)
 		size = i < 2 ? 2 : 1;
 		if (ft_strnequ(input, str_flag[i], size) == TRUE)
 		{
-			printf("cur = '%s' | state = FLAG\n", str_flag[i]);
 			machine->flag |= (1 << i);
+			printf("cur = '%s' | state = FLAG \t| flag = %s (%d)\n", str_flag[i], ft_itoa_binary(machine->flag), machine->flag);
 			return (size);
 		}
 		i++;
@@ -96,12 +83,14 @@ int		letter(char *input, t_state_machine *machine)
 	return (1);
 }
 
-void	ft_printf(char *input)
+void	ft_printf(char *input, ...)
 {
 	static t_function process[4] = {letter, flag, conv, error};
 	t_state_machine machine;
+	va_list	ap;
 	int		ret;
 
+	va_start(input, ap);
 	machine.state = LETTER;
 	machine.len = 0;
 	machine.flag = 0;
@@ -114,6 +103,7 @@ void	ft_printf(char *input)
 	//ft_strjoin_free(out, machine->buffer);
 	//write(1, out, size);
 	//free(out);
+	va_end(ap);
 }
 
 int		main(int ac, char **av)

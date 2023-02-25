@@ -52,13 +52,18 @@ enum e_state
 typedef struct s_state_machine
 {
 	enum e_state	state;
+	va_list			ap;
 	char			buffer[4096];
 	int				len;
 	char			*out;
+	int				out_size;
 	int				flag;
 }				t_state_machine;
 
 typedef int		(*t_function)(char *, t_state_machine *);
+typedef void	(*t_conversion)(t_state_machine *);
+
+void	do_conversion(t_state_machine *machine);
 
 #endif 
 
