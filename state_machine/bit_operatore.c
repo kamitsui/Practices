@@ -20,7 +20,7 @@ int main()
 	num &= ~(1 << bit_position);//			0
 	printf("%d\t%x\t\t1011\tnum &= ~(1 << bit_position)\n", num, num);
 
-	int r=0;
+	//int r=0;
 	int i=0;
 	num = 0x10;//0b0001000 position:4
 	while(i < 10)

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdarg.h>
 #include "../../Libft/libft/libft.h"
 #include "main.h"
 
@@ -90,7 +91,7 @@ void	ft_printf(char *input, ...)
 	va_list	ap;
 	int		ret;
 
-	va_start(input, ap);
+	va_start(ap, input);
 	machine.state = LETTER;
 	machine.len = 0;
 	machine.flag = 0;
