@@ -93,6 +93,7 @@ int	main(void)
 	printf("---- other ----\n");
 	printf("asdfgh%");
 	printf("\nasddd%basdfg");
+	printf("%l%");
 	//printf("%1$d:%2$.*3$d:%4$.*3$d\n", HH, min, precision, sec);
 	return 0;
 }
