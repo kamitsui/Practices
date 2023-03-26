@@ -6,7 +6,7 @@
 /*   By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:30:43 by kamitsui          #+#    #+#             */
-/*   Updated: 2023/03/10 14:30:48 by kamitsui         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:59:40 by kamitsui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ void	va_function(int num, ...)
 	{
 		result = va_arg(ap, int);
 		printf("%d,", result);
+	printf("(%c)\n", ap[0]);
 		i++;
 	}
 	result = va_arg(ap, int);
 	if (*ap == '\0')
-		printf("*ap == null_terminal\n");
+		printf("*ap == null_terminal, ");
+	printf("(%c)\n", ap[0]);
 	va_end(ap);
 }
 
