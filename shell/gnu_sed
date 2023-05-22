@@ -1,0 +1,5 @@
+# !bin bash
+# reference URL https://learnbyexample.github.io/learn_gnused/Exercise_solutions.html
+
+# Replace 5 with five
+echo 'They ate 5 apples' | sed 's/5/five/'

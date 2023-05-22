@@ -1,0 +1,7 @@
+# Add 5 to the second colomun of each row and print the result
+awk '{print $1, $2+5}' data.txt
+
+echo "-----"
+
+# only the row the second colomn is greater than 30
+awk '{print $1, $2+5}' data.txt | sed -n '/[3-9][0-9]$/p'

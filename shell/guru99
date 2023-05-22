@@ -1,0 +1,34 @@
+# Basic Regular expressions (Reguex)
+# matches "a"
+cat sample | grep a
+echo ""
+# start of string  "a"
+cat sample | grep ^a
+echo ""
+# matches  "t"
+cat sample | grep t
+echo ""
+# end of string "t"
+cat sample | grep t$
+echo ""
+
+# "." replace any charactor
+cat sample | grep app.e
+echo ""
+
+# Interval Reguex the number of occurences {n}, {n, m}, {n, }
+# exactly 2 times
+cat sample | grep -E p{2}
+echo ""
+# Extended Reguex
+# \+ 	maches one or mora occurrence of the previous character
+cat sample | grep "a\+t"
+echo ""
+
+# Brece expression
+echo {aa,bb,cc,dd}
+echo {0..11}
+echo {a..z}
+echo a{0..9}b
+
+# reference URL https://www.guru99.com/linux-regular-expressions.html

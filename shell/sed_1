@@ -1,0 +1,3 @@
+# !bin bash
+# print only lines containing the word "apple" "banana"
+sed -nE '/(apple|banana)/Ip' sed_sample.txt
