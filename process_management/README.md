@@ -16,7 +16,7 @@ I practiced the below system call
 Learn about way to use pipe command
 
 Implementation the pipe command
-* pipe()    --  Postfix delivery to external command
+* pipe()    --  create descriptor pair for interprocess communication
 
 
 ## Command execution
