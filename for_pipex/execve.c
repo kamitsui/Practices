@@ -6,7 +6,7 @@
 /*   By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:58:04 by kamitsui          #+#    #+#             */
-/*   Updated: 2023/05/23 13:52:07 by kamitsui         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:57:48 by kamitsui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,40 @@ int main() {
 //	const char *filePath = "/bin/ls";
 //	char *const arguments[] = { "ls", "-l", NULL };
 //	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };
-	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/process_management/execve_bin";
+
+// Success : exit this process
+//	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/for_pipex/execve_bin";
+//	char *const arguments[] = { "execve_bin", NULL };
+//	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };// Correct path : ps & env
+//	binary file for call by ececve()
+//	  PID TTY           TIME CMD
+//	76984 ttys000    0:00.03 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server /usr/bin/login -fpl kamitsui /Applications/iTerm.app/Contents/MacOS/iTerm2 --launch_shell
+//	76986 ttys000    0:03.17 -zsh
+//	81793 ttys000    0:00.52 vim execve.c
+//	82875 ttys000    0:00.00 execve_bin
+//	PATH=/bin:/usr/bin
+//	PWD=/Users/kamitsui/Documents/42cursus/Practices/for_pipex
+//	SHLVL=1
+//	_=/usr/bin/env
+
+// Fail in executable : exit this process
+//	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/for_pipex/execve_bin";
+//	char *const arguments[] = { "execve_bin", NULL };
+//	char *const environment[] = { "PATH=/Users/kamitsui/Documents/42cursus/Practices/for_pipex", NULL };// Nothing path : ps & env
+//	binary file for call by ececve()
+//	sh: ps: command not found
+//	sh: env: command not found
+
+// Fail : continue the process
+	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/for_pipex/execve_bin_no";
 	char *const arguments[] = { "execve_bin", NULL };
-	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };
-//	char *const environment[] = { "PATH=/Users/kamitsui/Documents/42cursus/Practices/process_management", NULL };
+	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };// Correct path : ps & env
+//	./a.out
+//	result:-1
+//	Error executing program: No such file or directory
 
 	int result = execve(filePath, arguments, environment);
+	printf("result:%d\n", result);
 
 	// If execve() returns, an error occurred
 	if (result == -1)
