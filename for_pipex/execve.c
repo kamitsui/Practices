@@ -6,7 +6,7 @@
 /*   By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:58:04 by kamitsui          #+#    #+#             */
-/*   Updated: 2023/06/06 15:57:48 by kamitsui         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:31:30 by kamitsui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 #include <stdio.h>
 
 int main() {
-//	const char *filePath = "/bin/ls";
+//	simple case
+//	const char *filePath = "/bin/ls";// Success
+//	const char *filePath = "ls";// fail
 //	char *const arguments[] = { "ls", "-l", NULL };
 //	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };
 
