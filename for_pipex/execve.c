@@ -6,7 +6,7 @@
 /*   By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:58:04 by kamitsui          #+#    #+#             */
-/*   Updated: 2023/06/06 16:31:30 by kamitsui         ###   ########.fr       */
+/*   Updated: 2023/07/04 21:49:41 by kamitsui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,23 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 
-int main() {
+//int main() {
+int main(int ac, char *av[], char **env) {
+	if (env == NULL)
+		ac++;
 //	simple case
 //	const char *filePath = "/bin/ls";// Success
-//	const char *filePath = "ls";// fail
+	//const char *filePath = "ls";// fail
+	const char *filePath = "../execve_bin";// fail
 //	char *const arguments[] = { "ls", "-l", NULL };
-//	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };
+//	char *const arguments[] = { "/bin/ls", "-l", "-a", NULL };// OK
+	//char *arguments[] = { av[1], av[2], NULL };
+	char *arguments[] = { "../execve_bin", NULL };
+	//char *const arguments[] = { "ls", "-l", "-a", NULL };
+//	char *const arguments[] = { "ls", "-al", NULL };
+	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };
 
 // Success : exit this process
 //	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/for_pipex/execve_bin";
@@ -46,13 +56,14 @@ int main() {
 //	sh: env: command not found
 
 // Fail : continue the process
-	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/for_pipex/execve_bin_no";
-	char *const arguments[] = { "execve_bin", NULL };
-	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };// Correct path : ps & env
+//	const char *filePath = "/Users/kamitsui/Documents/42cursus/Practices/for_pipex/execve_bin_no";
+//	char *const arguments[] = { "execve_bin", NULL };
+//	char *const environment[] = { "PATH=/bin:/usr/bin", NULL };// Correct path : ps & env
 //	./a.out
 //	result:-1
 //	Error executing program: No such file or directory
 
+	printf("av[1]:%s(%lu) av[2]:%s(%lu)\n", av[1], strlen(av[1]), av[2], strlen(av[2]));
 	int result = execve(filePath, arguments, environment);
 	printf("result:%d\n", result);
 
