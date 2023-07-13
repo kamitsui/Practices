@@ -6,14 +6,15 @@
 #    By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/09 14:24:12 by kamitsui          #+#    #+#              #
-#    Updated: 2023/07/11 19:32:59 by kamitsui         ###   ########.fr        #
+#    Updated: 2023/07/11 20:32:31 by kamitsui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = $(NAME1) $(NAME2) $(NAME3)
+TARGET = $(NAME1) $(NAME2) $(NAME3) $(NAME4)
 NAME1 = my_window
 NAME2 = push_image_window
 NAME3 = square
+NAME4 = circle
 
 MLX_PATH = /Users/kamitsui/lib
 MLX_DYLB = $(MLX_PATH)/libmlx.dylib
@@ -28,10 +29,12 @@ FRAMEWORK = -framework OpenGL -framework AppKit
 SRC1 = my_window.c
 SRC2 = push_image_window.c
 SRC3 = square.c
+SRC4 = circle.c
 
 OBJ1 = $(addprefix $(OBJ_DIR)/, $(SRC1:.c=.o))
 OBJ2 = $(addprefix $(OBJ_DIR)/, $(SRC2:.c=.o))
 OBJ3 = $(addprefix $(OBJ_DIR)/, $(SRC3:.c=.o))
+OBJ4 = $(addprefix $(OBJ_DIR)/, $(SRC4:.c=.o))
 
 vpath %.c $(SRC_DIR)
 
@@ -49,6 +52,9 @@ $(NAME2): $(OBJ2) $(MLX_DYLB)
 
 $(NAME3): $(OBJ3) $(MLX_DYLB)
 	$(CC) -o $(NAME3) $(OBJ3) -L $(MLX_PATH) $(MLX_CF)
+
+$(NAME4): $(OBJ4) $(MLX_DYLB)
+	$(CC) -o $(NAME4) $(OBJ4) -L $(MLX_PATH) $(MLX_CF)
 
 #$(MLX_DYLB):
 #	@printf "Please install libmlx.dylb"
