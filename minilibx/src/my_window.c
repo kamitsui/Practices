@@ -6,7 +6,7 @@
 /*   By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 12:53:24 by kamitsui          #+#    #+#             */
-/*   Updated: 2023/07/11 14:11:09 by kamitsui         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:46:55 by kamitsui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	main(void)
 {
 	void	*mlx_ptr;	// MiniLibX graphics system pointe
-	void	*win_ptr;	// Window pointer
+//	void	*win_ptr;	// Window pointer
 
 	// Initialize the MiniLibx graphics system
 	mlx_ptr = mlx_init();
 
 	// Create a new window
-	win_ptr = mlx_new_window(mlx_ptr, 800, 600, "My Window");
+//	win_ptr = mlx_new_window(mlx_ptr, 800, 600, "My Window");
+	mlx_new_window(mlx_ptr, 800, 600, "My Window");
 
 	// Perform further graphics operations on the created window
 

@@ -6,7 +6,7 @@
 #    By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/09 14:24:12 by kamitsui          #+#    #+#              #
-#    Updated: 2023/07/11 20:32:31 by kamitsui         ###   ########.fr        #
+#    Updated: 2023/07/14 14:00:50 by kamitsui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,16 @@ NAME2 = push_image_window
 NAME3 = square
 NAME4 = circle
 
-MLX_PATH = /Users/kamitsui/lib
-MLX_DYLB = $(MLX_PATH)/libmlx.dylib
+#MLX_PATH = /Users/kamitsui/lib
+MLX_PATH = /Users/kamitsui/lib/minilibx/minilibx_macos
+#LIB_MLX = $(MLX_PATH)/libmlx.dylib
+LIB_MLX = $(MLX_PATH)/libmlx.a
 SRC_DIR = src
 OBJ_DIR = obj
 
 CC = clang
 CF = -Wall -Wextra -Werror
+INCLUDE = -I$(MLX_PATH)
 MLX_CF = -lmlx
 FRAMEWORK = -framework OpenGL -framework AppKit
 
@@ -40,21 +43,25 @@ vpath %.c $(SRC_DIR)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) -Wall -Wextra -Werror -c $< -o $@
+	$(CC) $(CF) $(INCLUDE) -c $< -o $@
 
 all: $(TARGET)
 
-$(NAME1): $(OBJ1) $(MLX_DYLB)
-	$(CC) -o $(NAME1) $(OBJ1) -L $(MLX_PATH) $(MLX_CF)
+$(NAME1): $(OBJ1) $(LIB_MLX)
+#	$(CC) -o $(NAME1) $(OBJ1) -L $(MLX_PATH) $(MLX_CF)
+	$(CC) -o $(NAME1) $(OBJ1) $(LIB_MLX) $(FRAMEWORK)
 
-$(NAME2): $(OBJ2) $(MLX_DYLB)
-	$(CC) -o $(NAME2) $(OBJ2) -L $(MLX_PATH) $(MLX_CF)
+$(NAME2): $(OBJ2) $(LIB_MLX)
+#	$(CC) -o $(NAME2) $(OBJ2) -L $(MLX_PATH) $(MLX_CF)
+	$(CC) -o $(NAME2) $(OBJ2) $(LIB_MLX) $(FRAMEWORK)
 
-$(NAME3): $(OBJ3) $(MLX_DYLB)
-	$(CC) -o $(NAME3) $(OBJ3) -L $(MLX_PATH) $(MLX_CF)
+$(NAME3): $(OBJ3) $(LIB_MLX)
+#	$(CC) -o $(NAME3) $(OBJ3) -L $(MLX_PATH) $(MLX_CF)
+	$(CC) -o $(NAME3) $(OBJ3) $(LIB_MLX) $(FRAMEWORK)
 
-$(NAME4): $(OBJ4) $(MLX_DYLB)
-	$(CC) -o $(NAME4) $(OBJ4) -L $(MLX_PATH) $(MLX_CF)
+$(NAME4): $(OBJ4) $(LIB_MLX)
+#	$(CC) -o $(NAME4) $(OBJ4) -L $(MLX_PATH) $(MLX_CF)
+	$(CC) -o $(NAME4) $(OBJ4) $(LIB_MLX) $(FRAMEWORK)
 
 #$(MLX_DYLB):
 #	@printf "Please install libmlx.dylb"
