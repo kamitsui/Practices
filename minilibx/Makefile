@@ -6,15 +6,17 @@
 #    By: kamitsui <kamitsui@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/09 14:24:12 by kamitsui          #+#    #+#              #
-#    Updated: 2023/07/14 14:00:50 by kamitsui         ###   ########.fr        #
+#    Updated: 2023/07/16 22:33:15 by kamitsui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = $(NAME1) $(NAME2) $(NAME3) $(NAME4)
+TARGET = $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5) $(NAME6)
 NAME1 = my_window
 NAME2 = push_image_window
 NAME3 = square
 NAME4 = circle
+NAME5 = wireframe
+NAME6 = image
 
 #MLX_PATH = /Users/kamitsui/lib
 MLX_PATH = /Users/kamitsui/lib/minilibx/minilibx_macos
@@ -33,11 +35,15 @@ SRC1 = my_window.c
 SRC2 = push_image_window.c
 SRC3 = square.c
 SRC4 = circle.c
+SRC5 = wireframe.c
+SRC6 = use_image.c
 
 OBJ1 = $(addprefix $(OBJ_DIR)/, $(SRC1:.c=.o))
 OBJ2 = $(addprefix $(OBJ_DIR)/, $(SRC2:.c=.o))
 OBJ3 = $(addprefix $(OBJ_DIR)/, $(SRC3:.c=.o))
 OBJ4 = $(addprefix $(OBJ_DIR)/, $(SRC4:.c=.o))
+OBJ5 = $(addprefix $(OBJ_DIR)/, $(SRC5:.c=.o))
+OBJ6 = $(addprefix $(OBJ_DIR)/, $(SRC6:.c=.o))
 
 vpath %.c $(SRC_DIR)
 
@@ -62,6 +68,14 @@ $(NAME3): $(OBJ3) $(LIB_MLX)
 $(NAME4): $(OBJ4) $(LIB_MLX)
 #	$(CC) -o $(NAME4) $(OBJ4) -L $(MLX_PATH) $(MLX_CF)
 	$(CC) -o $(NAME4) $(OBJ4) $(LIB_MLX) $(FRAMEWORK)
+
+$(NAME5): $(OBJ5) $(LIB_MLX)
+#	$(CC) -o $(NAME4) $(OBJ4) -L $(MLX_PATH) $(MLX_CF)
+	$(CC) -o $(NAME5) $(OBJ5) $(LIB_MLX) $(FRAMEWORK)
+
+$(NAME6): $(OBJ6) $(LIB_MLX)
+#	$(CC) -o $(NAME4) $(OBJ4) -L $(MLX_PATH) $(MLX_CF)
+	$(CC) -o $(NAME6) $(OBJ6) $(LIB_MLX) $(FRAMEWORK)
 
 #$(MLX_DYLB):
 #	@printf "Please install libmlx.dylb"
